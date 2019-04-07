@@ -15,7 +15,15 @@
     $query = "select * from location"
 
     $result = $con->query($query);
-	
+
+    // this above needs to be added to uni one
+    while ($row = $result -> fetch()) {
+        $data[] = $row;
+    }
+    
+    echo json_encode($data);
+
+    mysqi.close()
 	
 
    /***************************
