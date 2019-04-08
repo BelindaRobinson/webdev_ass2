@@ -41,7 +41,7 @@ function WeatherWidget(container_element){
 		
 		_ui.cityfind = document.createElement("button");
 		_ui.cityfind.innerHTML = "Search";
-		_ui.cityfint.onclick = function() {
+		_ui.cityfind.onclick = function() {
 			_addcityname(_ui.cityentry.value);
 			_ui.cityentry.value = "";
 		}
@@ -70,7 +70,7 @@ function WeatherWidget(container_element){
 		_ui.container.appendChild(_ui.list);
 	}
 
-	var _addnewcity = function(city){
+	var _addcityname = function(city){
 		for(i = 0; 1< _list.length; i++) {
 			if(city == _list(i).getcity()) {
 				alert("already ther");
