@@ -10,15 +10,15 @@
 	 * Add your code to connect to your database here
 	 */
 	 
-    $location = $_GET['location'];
+    $name = $_GET['name'];
     
-    $query = "select * from location"
+    $query = "select * from location where name = '$name'";
 
     $result = $con->query($query);
 
     // this above needs to be added to uni one
     while ($row = $result -> fetch()) {
-        $data[] = $row;
+        echo($row['name'];
     }
     
     echo json_encode($data);
