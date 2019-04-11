@@ -10,22 +10,27 @@
 	 * Add your code to connect to your database here
 	 */
 	 
-    $name = $_GET['name'];
+    $name = $_GET['location'];
     
     $query = "select * from location where name = '$name'";
 
     $result = $con->query($query);
 
+    $data = array();
+
+
+
     // this above needs to be added to uni one
     while ($row = $result -> fetch()) {
-        echo($row['name'];
+    //    echo($row['name']);
+    $data[] = $row;
     }
     
-    echo json_encode($data);
+    echo json_encode($data); 
 
-    mysqi.close()
+    $conn = null; // comment out if issues
 	
-
+    //radio buttons not buttons
    /***************************
     * 
     * Add code here to query the DB for weather information for the given town

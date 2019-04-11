@@ -78,7 +78,7 @@ function WeatherWidget(container_element){
 			}
 		}
 		_request = new XMLHttpRequest();
-		var url = "php/weather.php?location=" + location; // needs changing
+		var url = "php/weather.php?location=" + city; // needs changing
 		_request.open("GET", url, true);
 		_request.onreadystatechange - _addnewcitylistitem;
 		_request.send(city);
@@ -94,7 +94,7 @@ function WeatherWidget(container_element){
 				}
 				var a = data[0].name;				
 				var b = data[0].minitemp;
-				var c = data[0].maxtemp;n
+				var c = data[0].maxtemp;
 
 				var witem = new weatherdata(a,b,c);
 				_list.push(witem);
@@ -179,6 +179,7 @@ function WeatherWidget(container_element){
 	* full weather data for a town
 	********************************************************/
 	
+	//missing outlook
 	var weatherdate = function(location, minitemp, maxtemp){
 
 		var _location = location;		
@@ -194,7 +195,7 @@ function WeatherWidget(container_element){
 		var _createUI = function(){
 
 			_ui.dom_element = document.createElement("div");
-			_ui.dom_element.classname = "slection";
+			_ui.dom_element.classname = "selection";
 			_ui.city_label = docunment.createElement("span");
 			_ui.city_label.innerHTML = _city + " ";
 			_ui.city_label.classname = "section_label";
@@ -211,7 +212,7 @@ function WeatherWidget(container_element){
 		}
 
 		this.getcity = function(){
-			return _city;
+			return _location;
 		}	
 
 		this.getminitemp = function(){
@@ -219,10 +220,30 @@ function WeatherWidget(container_element){
 		}
 
 		this.getmax = function(){
-			return _max;
+			return _maxtemp;
 		}
 
 		_createUI();
+
+		//debugging
+		//request check the respone, if empty something is wrong, 505 error not connecting to db, php
+		//check request function, is it being called, console.log(), check syntax of request, log function, js
+		//check callback function, check its the wright one console.log(), check info conesole.log(), check how its displayed, js
+
+		//write correct html
+		//then convert to dom
+		//check ordering for dom
+
+		//container - classname = "monitor"
+		//title - span		
+		//toolbar - span "sort by"
+		//			dropdown
+		//			span "town"
+		//			radio button
+		//			span "maxtemp"
+		//add title to container then make buttons then add to toolbar then toolbar to container
+
+		//empty div and append to container above, _ui.list call this to display data
 
 		
 		//_request = new XMLHttpRequest();
