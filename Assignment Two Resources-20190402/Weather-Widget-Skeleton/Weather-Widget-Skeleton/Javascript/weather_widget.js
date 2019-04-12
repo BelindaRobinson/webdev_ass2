@@ -39,7 +39,8 @@ function WeatherWidget(container_element){
 		_ui.cityentry.type = "text";
 		_ui.cityentry.size = 22;
 		
-		_ui.cityfind = document.createElement("button");
+		_ui.cityfind = document.createElement("input");
+		_ui.cityfind.type = "radio";
 		_ui.cityfind.innerHTML = "Search";
 		_ui.cityfind.onclick = function() {
 			_addcityname(_ui.cityentry.value);
@@ -78,7 +79,7 @@ function WeatherWidget(container_element){
 			}
 		}
 		_request = new XMLHttpRequest();
-		var url = "php/weather.php?location=" + city; // needs changing
+		var url = "php/weather.php?location=" + city; 
 		_request.open("GET", url, true);
 		_request.onreadystatechange - _addnewcitylistitem;
 		_request.send(city);
@@ -180,9 +181,10 @@ function WeatherWidget(container_element){
 	********************************************************/
 	
 	//missing outlook
-	var weatherdate = function(location, minitemp, maxtemp){
+	var weatherdate = function(location, outlock, minitemp, maxtemp){
 
-		var _location = location;		
+		var _location = location;
+		var _outlook = outlook;	
 		var _minitemp = minitemp;
 		var _maxtemp = maxtemp;
 
@@ -213,7 +215,11 @@ function WeatherWidget(container_element){
 
 		this.getcity = function(){
 			return _location;
-		}	
+		}
+		
+		this.getoutlook = function(){
+			return  _outlook;
+		}
 
 		this.getminitemp = function(){
 			return _minitemp;
